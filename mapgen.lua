@@ -19,6 +19,11 @@ local c_air = minetest.get_content_id("air")
 local c_ignore = minetest.get_content_id("ignore")
 local c_vacuum
 
+if has_vacuum_mod then
+	c_vacuum = minetest.get_content_id("vacuum:vacuum")
+end
+
+
 local ores = {}
 local min_chance = 1
 
@@ -27,29 +32,24 @@ local register_ore = function(def)
 	min_chance = math.min(def.chance, min_chance)
 end
 
-if has_vacuum_mod then
-
-	c_vacuum = minetest.get_content_id("vacuum:vacuum")
-	register_ore({
-		id = c_vacuum,
-		chance = 1
-	})
-
-else
-	register_ore({
-		id = minetest.get_content_id("air"),
-		chance = 1
-	})
-end
-
 register_ore({
-	id = minetest.get_content_id("default:stone_with_diamond"),
-	chance = 0.998
+	id = minetest.get_content_id("air"),
+	chance = 1.16
 })
 
 register_ore({
-	id = minetest.get_content_id("default:stone_with_mese"),
-	chance = 0.995
+	id = minetest.get_content_id("default:goldblock"),
+	chance = 1.15
+})
+
+register_ore({
+	id = minetest.get_content_id("default:diamondblock"),
+	chance = 1.1
+})
+
+register_ore({
+	id = minetest.get_content_id("default:lava_source"),
+	chance = 1.0
 })
 
 register_ore({
@@ -64,16 +64,11 @@ register_ore({
 
 register_ore({
 	id = minetest.get_content_id("default:dirt"),
-	chance = 0.9
+	chance = 0.88
 })
 
 register_ore({
-	id = minetest.get_content_id("default:dirt"),
-	chance = 0.85
-})
-
-register_ore({
-	id = minetest.get_content_id("default:dirt"),
+	id = minetest.get_content_id("default:dirt_with_grass"),
 	chance = 0.8
 })
 
