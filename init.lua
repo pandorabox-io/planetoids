@@ -6,11 +6,13 @@ local has_vacuum_mod = minetest.get_modpath("vacuum")
 local planet_params = {
    offset = 0,
    scale = 1,
-   spread = {x=512, y=256, z=512},
+   spread = {x=2000, y=200, z=2000},
    seed = 345465738,
    octaves = 3,
    persist = 0.6
 }
+
+-- 2543, 6995, -3037
 
 local c_base = minetest.get_content_id("default:stone")
 local c_air = minetest.get_content_id("air")
@@ -67,12 +69,12 @@ register_ore({
 
 register_ore({
 	id = minetest.get_content_id("default:dirt"),
-	chance = 0.8
+	chance = 0.85
 })
 
 register_ore({
 	id = minetest.get_content_id("default:dirt"),
-	chance = 0.7
+	chance = 0.8
 })
 
 -- sort ores
