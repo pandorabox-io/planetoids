@@ -12,7 +12,6 @@ local planet_params = {
    persist = 0.6
 }
 
--- 2543, 6995, -3037
 
 local c_base = minetest.get_content_id("default:stone")
 local c_air = minetest.get_content_id("air")
@@ -33,7 +32,7 @@ local register_ore = function(def)
 end
 
 register_ore({
-	id = minetest.get_content_id("air"),
+	id = minetest.get_content_id("default:lava_source"),
 	chance = 1.16
 })
 
@@ -44,11 +43,16 @@ register_ore({
 
 register_ore({
 	id = minetest.get_content_id("default:diamondblock"),
+	chance = 1.12
+})
+
+register_ore({
+	id = minetest.get_content_id("default:steelblock"),
 	chance = 1.1
 })
 
 register_ore({
-	id = minetest.get_content_id("default:lava_source"),
+	id = minetest.get_content_id("default:stone_with_iron"),
 	chance = 1.0
 })
 
@@ -63,25 +67,9 @@ register_ore({
 })
 
 register_ore({
-	id = minetest.get_content_id("default:dirt"),
-	chance = 0.88
-})
-
-register_ore({
-	id = minetest.get_content_id("default:dirt_with_grass"),
+	id = minetest.get_content_id("default:stone"),
 	chance = 0.8
 })
-
-register_ore({
-	id = minetest.get_content_id("air"),
-	chance = 0.65
-})
-
-register_ore({
-	id = minetest.get_content_id("planetoids:atmosphere"),
-	chance = 0.6
-})
-
 
 
 -- sort ores
@@ -91,14 +79,16 @@ end)
 
 minetest.register_on_generated(function(minp, maxp, seed)
 
-	-- TODO: config height
-	if minp.y < 6000 or minp.y > 10000 then
+	-- default from 6k to 10k
+	if minp.y < planetoids.miny or minp.y > planetoids.maxy then
 		return
 	end
 
 	local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
 	local area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
 	local data = vm:get_data()
+	local min_perlin = 10
+	local max_perlin = 0
 
 	local side_length = maxp.x - minp.x + 1 -- 80
 	local map_lengths_xyz = {x=side_length, y=side_length, z=side_length}
@@ -117,6 +107,9 @@ minetest.register_on_generated(function(minp, maxp, seed)
 			-- unpopulated node
 
 			local planet_n = planet_perlin_map[i]
+
+			if planet_n > max_perlin then max_perlin = planet_n end
+			if planet_n < min_perlin then min_perlin = planet_n end
 
 			if planet_n > min_chance then
 				
@@ -138,9 +131,9 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	end --y
 	end --z
 
-	--if count > 0 then
-		-- print("Count: " .. count)
-	--end
+	if planetoids.debug then
+		print("[Planetoids] count: " .. count .. " min: " .. min_perlin .. " max: " .. max_perlin)
+	end
 
 	vm:set_data(data)
 	vm:write_to_map()
