@@ -67,8 +67,13 @@ register_ore({
 })
 
 register_ore({
+	id = minetest.get_content_id("default:ice"),
+	chance = 0.9
+})
+
+register_ore({
 	id = minetest.get_content_id("default:stone"),
-	chance = 0.8
+	chance = 0.85
 })
 
 
