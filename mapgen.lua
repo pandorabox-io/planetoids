@@ -37,17 +37,7 @@ register_ore({
 })
 
 register_ore({
-	id = minetest.get_content_id("default:goldblock"),
-	chance = 1.15
-})
-
-register_ore({
-	id = minetest.get_content_id("default:diamondblock"),
-	chance = 1.12
-})
-
-register_ore({
-	id = minetest.get_content_id("default:steelblock"),
+	id = minetest.get_content_id("default:stone_with_mese"),
 	chance = 1.1
 })
 
