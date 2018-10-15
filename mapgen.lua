@@ -144,6 +144,10 @@ minetest.register_on_generated(function(minp, maxp, seed)
 
 			local index = area:index(pos.x,pos.y,pos.z)
 			data[index] = c_loot_node
+			-- TODO: add casing around node
+			-- door with trap obsidian glass https://github.com/minetest-mods/moreblocks/blob/master/nodes.lua#L317
+			-- casing with https://wiki.minetest.net/Steel_Block
+			-- uranium block under loot chest https://github.com/minetest-mods/technic/blob/c93bfefd9fb66cab4a766b4e6a4d361a85503685/technic_worldgen/nodes.lua#L73
 			if planetoids.debug then
 				print("[Planetoids] generated loot node @ " .. minetest.pos_to_string(pos))
 			end
