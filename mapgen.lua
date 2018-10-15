@@ -1,4 +1,6 @@
 local has_vacuum_mod = minetest.get_modpath("vacuum")
+local has_loot_mod = minetest.get_modpath("loot")
+
 
 -- http://dev.minetest.net/PerlinNoiseMap
 
@@ -16,10 +18,15 @@ local planet_params = {
 local c_base = minetest.get_content_id("default:stone")
 local c_air = minetest.get_content_id("air")
 local c_ignore = minetest.get_content_id("ignore")
+local c_loot_node
 local c_vacuum
 
 if has_vacuum_mod then
 	c_vacuum = minetest.get_content_id("vacuum:vacuum")
+end
+
+if has_loot_mod then
+	c_loot_node = minetest.get_content_id("loot:loot_node")
 end
 
 
@@ -125,6 +132,23 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	end --x
 	end --y
 	end --z
+
+	if count == 0 and has_loot_mod then
+		-- empty space, add loot chance if available
+		if math.random(10) == 1 then
+			local pos = {
+				x=math.random(minp.x,maxp.x),
+				y=math.random(minp.y,maxp.y),
+				z=math.random(minp.z,maxp.z)
+			}
+
+			local index = area:index(pos.x,pos.y,pos.z)
+			data[index] = c_loot_node
+			if planetoids.debug then
+				print("[Planetoids] generated loot node @ " .. minetest.pos_to_string(pos))
+			end
+		end
+	end
 
 	if planetoids.debug then
 		print("[Planetoids] count: " .. count .. " min: " .. min_perlin .. " max: " .. max_perlin)
