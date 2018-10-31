@@ -79,6 +79,10 @@ table.sort(ores, function(a,b)
 	return b.chance < a.chance
 end)
 
+local planet_perlin
+
+local planet_perlin_map = {}
+
 minetest.register_on_generated(function(minp, maxp, seed)
 
 	-- default from 6k to 10k
@@ -95,7 +99,8 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	local side_length = maxp.x - minp.x + 1 -- 80
 	local map_lengths_xyz = {x=side_length, y=side_length, z=side_length}
 
-	local planet_perlin_map = minetest.get_perlin_map(planet_params, map_lengths_xyz):get3dMap_flat(minp)
+	planet_perlin = planet_perlin or minetest.get_perlin_map(planet_params, map_lengths_xyz)
+	planet_perlin:get3dMap_flat(minp, planet_perlin_map)
 
 	local i = 1
 	local count = 0
