@@ -11,6 +11,7 @@ planetoids = {
 local MP = minetest.get_modpath("planetoids")
 
 dofile(MP.."/ores.lua")
+dofile(MP.."/mapgen_oreplanet.lua")
 dofile(MP.."/mapgen.lua")
 
 print("[OK] Planetoids")
