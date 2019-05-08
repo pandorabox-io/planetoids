@@ -52,7 +52,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	local map_lengths_xyz = {x=side_length, y=side_length, z=side_length}
 
 	planet_perlin = planet_perlin or minetest.get_perlin_map(planet_params, map_lengths_xyz)
-	planet_perlin:get3dMap_flat(minp, planet_perlin_map)
+	planet_perlin:get_3d_map_flat(minp, planet_perlin_map)
 
 	local i = 1
 	local count = 0
