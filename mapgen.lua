@@ -30,54 +30,6 @@ if has_loot_mod then
 end
 
 
-local ores = {}
-local min_chance = 1
-
-local register_ore = function(def)
-	table.insert(ores, def)
-	min_chance = math.min(def.chance, min_chance)
-end
-
-register_ore({
-	id = minetest.get_content_id("default:lava_source"),
-	chance = 1.16
-})
-
-register_ore({
-	id = minetest.get_content_id("default:stone_with_mese"),
-	chance = 1.1
-})
-
-register_ore({
-	id = minetest.get_content_id("default:stone_with_iron"),
-	chance = 1.0
-})
-
-register_ore({
-	id = minetest.get_content_id("default:stone_with_gold"),
-	chance = 0.99
-})
-
-register_ore({
-	id = minetest.get_content_id("default:stone_with_copper"),
-	chance = 0.98
-})
-
-register_ore({
-	id = minetest.get_content_id("default:ice"),
-	chance = 0.9
-})
-
-register_ore({
-	id = minetest.get_content_id("default:stone"),
-	chance = 0.85
-})
-
-
--- sort ores
-table.sort(ores, function(a,b)
-	return b.chance < a.chance
-end)
 
 local planet_perlin
 
@@ -118,11 +70,11 @@ minetest.register_on_generated(function(minp, maxp, seed)
 			if planet_n > max_perlin then max_perlin = planet_n end
 			if planet_n < min_perlin then min_perlin = planet_n end
 
-			if planet_n > min_chance then
-				
+			if planet_n > planetoids.min_chance then
+
 				-- planet
 				data[index] = c_base
-				for _,ore in pairs(ores) do
+				for _,ore in pairs(planetoids.ores) do
 					if planet_n > ore.chance then
 						data[index] = ore.id
 						count = count + 1
