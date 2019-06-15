@@ -1,4 +1,5 @@
 local has_vacuum_mod = minetest.get_modpath("vacuum")
+local has_planetoidgen_mod = minetest.get_modpath("planetoidgen")
 
 
 local get_corners = function(minp, maxp)
@@ -34,6 +35,11 @@ minetest.register_on_generated(function(minp, maxp, seed)
 
 	if has_vacuum_mod and not check_corners_in_space(minp, maxp) then
 		-- no vacuum there, don't generate planetoids in non-vacuum
+		return
+	end
+
+	if has_planetoidgen_mod and planetoidgen.is_occupied(minp) then
+		-- here be planetoids, skip mapgen
 		return
 	end
 
