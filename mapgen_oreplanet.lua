@@ -56,6 +56,19 @@ planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
 
   			if planet_n > max_perlin then max_perlin = planet_n end
   			if planet_n < min_perlin then min_perlin = planet_n end
+
+  			if planet_n > planetoids.min_chance then
+
+  				-- planet
+  				data[index] = c_base
+  				for _,ore in pairs(planetoids.ores) do
+  					if planet_n > ore.chance then
+  						data[index] = ore.id
+  						count = count + 1
+  						break
+  					end
+  				end
+  			end
   		end
 
   		i = i + 1
@@ -64,9 +77,7 @@ planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
   	end --y
   	end --z
 
-	minetest.generate_ores(vm, minp, maxp)
-
-	vm:set_data(data)
+    vm:set_data(data)
 
   	if planetoids.debug then
   		print("[Planetoids] count: " .. count .. " min: " .. min_perlin .. " max: " .. max_perlin)
