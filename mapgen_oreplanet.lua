@@ -32,8 +32,6 @@ local planet_perlin_map = {}
 planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
 
   	local data = vm:get_data()
-  	local min_perlin = 10
-  	local max_perlin = 0
 
   	local side_length = maxp.x - minp.x + 1 -- 80
   	local map_lengths_xyz = {x=side_length, y=side_length, z=side_length}
@@ -53,9 +51,6 @@ planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
   			-- unpopulated node
 
   			local planet_n = planet_perlin_map[i]
-
-  			if planet_n > max_perlin then max_perlin = planet_n end
-  			if planet_n < min_perlin then min_perlin = planet_n end
 
   			if planet_n > planetoids.min_chance then
 
@@ -79,7 +74,4 @@ planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
 
     vm:set_data(data)
 
-  	if planetoids.debug then
-  		print("[Planetoids] count: " .. count .. " min: " .. min_perlin .. " max: " .. max_perlin)
-  	end
 end
