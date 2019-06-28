@@ -62,7 +62,7 @@ planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
 	end --y
 	end --z
 
-	minetest.generate_ores(vm, minp, maxp)
 	vm:set_data(data)
+	minetest.generate_ores(vm, minp, maxp)
 
 end
