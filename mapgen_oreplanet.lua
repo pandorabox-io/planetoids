@@ -39,7 +39,6 @@ planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
 	planet_perlin:get_3d_map_flat(minp, planet_perlin_map)
 
 	local i = 1
-	local count = 0
 	for z=minp.z,maxp.z do
 	for y=minp.y,maxp.y do
 	for x=minp.x,maxp.x do
@@ -57,7 +56,6 @@ planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
 				for _,ore in pairs(planetoids.ores) do
 					if planet_n > ore.chance then
 						data[index] = ore.id
-						count = count + 1
 						break
 					end
 				end
@@ -70,6 +68,6 @@ planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
 	end --y
 	end --z
 
-vm:set_data(data)
+	vm:set_data(data)
 
 end

@@ -47,7 +47,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
 	local area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
 
-  planetoids.mapgen_oreplanet(minp, maxp, vm, area)
+	planetoids.mapgen_oreplanet(minp, maxp, vm, area)
 
 
 	vm:write_to_map()
