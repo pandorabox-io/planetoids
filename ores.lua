@@ -1,6 +1,6 @@
 local has_technic_mod = minetest.get_modpath("technic")
 
-local clust_scarcity = 24 * 24
+local clust_scarcity = 24 * 24 * 10
 local clust_num_ores = 27
 local clust_size = 10
 
