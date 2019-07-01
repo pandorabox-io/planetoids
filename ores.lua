@@ -49,16 +49,6 @@ minetest.register_ore({
 	y_min          = planetoids.miny,
 })
 
-minetest.register_ore({
-	ore_type       = "scatter",
-	ore            = "default:mese",
-	wherein        = "default:stone",
-	clust_scarcity = clust_scarcity,
-	clust_num_ores = clust_num_ores,
-	clust_size     = clust_size,
-	y_max          = planetoids.maxy,
-	y_min          = planetoids.miny,
-})
 
 minetest.register_ore({
 	ore_type       = "scatter",
