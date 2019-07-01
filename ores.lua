@@ -1,13 +1,17 @@
 local has_technic_mod = minetest.get_modpath("technic")
 
+local clust_scarcity = 24 * 24
+local clust_num_ores = 27
+local clust_size = 10
+
 
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "default:stone_with_iron",
 	wherein        = "default:stone",
-	clust_scarcity = 24 * 24 * 24,
-	clust_num_ores = 62,
-	clust_size     = 12,
+	clust_scarcity = clust_scarcity,
+	clust_num_ores = clust_num_ores,
+	clust_size     = clust_size,
 	y_max          = planetoids.maxy,
 	y_min          = planetoids.miny,
 })
@@ -16,9 +20,9 @@ minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "default:stone_with_gold",
 	wherein        = "default:stone",
-	clust_scarcity = 24 * 24 * 24,
-	clust_num_ores = 27,
-	clust_size     = 6,
+	clust_scarcity = clust_scarcity,
+	clust_num_ores = clust_num_ores,
+	clust_size     = clust_size,
 	y_max          = planetoids.maxy,
 	y_min          = planetoids.miny,
 })
@@ -27,9 +31,9 @@ minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "default:stone_with_mese",
 	wherein        = "default:stone",
-	clust_scarcity = 24 * 24 * 24,
-	clust_num_ores = 27,
-	clust_size     = 6,
+	clust_scarcity = clust_scarcity,
+	clust_num_ores = clust_num_ores,
+	clust_size     = clust_size,
 	y_max          = planetoids.maxy,
 	y_min          = planetoids.miny,
 })
@@ -38,9 +42,9 @@ minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "default:stone_with_diamond",
 	wherein        = "default:stone",
-	clust_scarcity = 24 * 24 * 24,
-	clust_num_ores = 27,
-	clust_size     = 6,
+	clust_scarcity = clust_scarcity,
+	clust_num_ores = clust_num_ores,
+	clust_size     = clust_size,
 	y_max          = planetoids.maxy,
 	y_min          = planetoids.miny,
 })
@@ -49,9 +53,9 @@ minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "default:mese",
 	wherein        = "default:stone",
-	clust_scarcity = 24 * 24 * 24,
-	clust_num_ores = 27,
-	clust_size     = 6,
+	clust_scarcity = clust_scarcity,
+	clust_num_ores = clust_num_ores,
+	clust_size     = clust_size,
 	y_max          = planetoids.maxy,
 	y_min          = planetoids.miny,
 })
@@ -60,9 +64,9 @@ minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "planetoids:radioactive_stone",
 	wherein        = "default:stone",
-	clust_scarcity = 8 * 8 * 8,
-	clust_num_ores = 9,
-	clust_size     = 3,
+	clust_scarcity = clust_scarcity,
+	clust_num_ores = clust_num_ores,
+	clust_size     = clust_size,
 	y_max          = planetoids.maxy,
 	y_min          = planetoids.miny,
 })
