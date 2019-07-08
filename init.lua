@@ -13,5 +13,6 @@ dofile(MP.."/stone.lua")
 dofile(MP.."/ores.lua")
 dofile(MP.."/mapgen_oreplanet.lua")
 dofile(MP.."/mapgen.lua")
+dofile(MP.."/lbm.lua")
 
 print("[OK] Planetoids")
