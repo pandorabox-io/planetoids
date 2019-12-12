@@ -4,6 +4,7 @@ planetoids = {
 	maxy = tonumber(minetest.settings:get("planetoids.maxy")) or 10000,
 	debug = minetest.settings:get("planetoids.debug") or false,
 	min_chance = 0.85,
+	ores = {}
 }
 
 

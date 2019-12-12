@@ -53,6 +53,12 @@ planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
 
 				-- planet
 				data[index] = c_base
+				for _,ore in pairs(planetoids.ores) do
+					if planet_n > ore.chance then
+						data[index] = ore.id
+						break
+					end
+				end
 			end
 		end
 

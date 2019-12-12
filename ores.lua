@@ -1,63 +1,46 @@
 
-local clust_scarcity = 24 * 24 * 10
-local clust_num_ores = 27
-local clust_size = 10
+local register_ore = function(def)
+	table.insert(planetoids.ores, def)
+	planetoids.min_chance = math.min(def.chance, planetoids.min_chance)
+end
 
-
-minetest.register_ore({
-	ore_type       = "scatter",
-	ore            = "default:stone_with_iron",
-	wherein        = "default:stone",
-	clust_scarcity = clust_scarcity,
-	clust_num_ores = clust_num_ores,
-	clust_size     = clust_size,
-	y_max          = planetoids.maxy,
-	y_min          = planetoids.miny,
+register_ore({
+	id = minetest.get_content_id("default:lava_source"),
+	chance = 1.16
 })
 
-minetest.register_ore({
-	ore_type       = "scatter",
-	ore            = "default:stone_with_gold",
-	wherein        = "default:stone",
-	clust_scarcity = clust_scarcity,
-	clust_num_ores = clust_num_ores,
-	clust_size     = clust_size,
-	y_max          = planetoids.maxy,
-	y_min          = planetoids.miny,
+register_ore({
+	id = minetest.get_content_id("default:stone_with_mese"),
+	chance = 1.1
 })
 
-minetest.register_ore({
-	ore_type       = "scatter",
-	ore            = "default:stone_with_mese",
-	wherein        = "default:stone",
-	clust_scarcity = clust_scarcity,
-	clust_num_ores = clust_num_ores,
-	clust_size     = clust_size,
-	y_max          = planetoids.maxy,
-	y_min          = planetoids.miny,
+register_ore({
+	id = minetest.get_content_id("default:stone_with_iron"),
+	chance = 1.0
 })
 
-minetest.register_ore({
-	ore_type       = "scatter",
-	ore            = "default:stone_with_diamond",
-	wherein        = "default:stone",
-	clust_scarcity = clust_scarcity,
-	clust_num_ores = clust_num_ores,
-	clust_size     = clust_size,
-	y_max          = planetoids.maxy,
-	y_min          = planetoids.miny,
+register_ore({
+	id = minetest.get_content_id("default:stone_with_gold"),
+	chance = 0.99
+})
+
+register_ore({
+	id = minetest.get_content_id("default:stone_with_copper"),
+	chance = 0.98
+})
+
+register_ore({
+	id = minetest.get_content_id("default:ice"),
+	chance = 0.9
+})
+
+register_ore({
+	id = minetest.get_content_id("default:stone"),
+	chance = 0.85
 })
 
 
-minetest.register_ore({
-	ore_type       = "scatter",
-	ore            = "planetoids:radioactive_stone",
-	wherein        = "default:stone",
-	clust_scarcity = clust_scarcity,
-	clust_num_ores = clust_num_ores,
-	clust_size     = clust_size,
-	y_max          = planetoids.maxy,
-	y_min          = planetoids.miny,
-})
-
-
+-- sort ores
+table.sort(planetoids.ores, function(a,b)
+	return b.chance < a.chance
+end)
