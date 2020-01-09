@@ -26,7 +26,7 @@ local check_corners_in_space = function(minp, maxp)
 end
 
 
-minetest.register_on_generated(function(minp, maxp, seed)
+minetest.register_on_generated(function(minp, maxp)
 
 	-- default from 6k to 10k
 	if minp.y < planetoids.miny or minp.y > planetoids.maxy then
