@@ -55,7 +55,15 @@ planetoids.mapgen_oreplanet = function(minp, maxp, vm, area)
 				data[index] = c_base
 				for _,ore in pairs(planetoids.ores) do
 					if planet_n > ore.chance then
-						data[index] = ore.id
+						if ore.id then
+							-- "plain" layer
+							data[index] = ore.id
+
+						elseif ore.id_list then
+							-- mixed layer
+							data[index] = ore.id_list[math.random(1,#ore.id_list)]
+						end
+
 						break
 					end
 				end

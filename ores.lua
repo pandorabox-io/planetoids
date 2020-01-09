@@ -10,22 +10,20 @@ register_ore({
 })
 
 register_ore({
-	id = minetest.get_content_id("default:stone_with_mese"),
-	chance = 1.1
-})
-
-register_ore({
-	id = minetest.get_content_id("default:stone_with_iron"),
+	id_list = {
+		minetest.get_content_id("default:stone_with_mese"),
+		minetest.get_content_id("default:stone_with_copper"),
+		minetest.get_content_id("default:stone_with_iron"),
+	},
 	chance = 1.0
 })
 
 register_ore({
-	id = minetest.get_content_id("default:stone_with_gold"),
-	chance = 0.99
-})
-
-register_ore({
-	id = minetest.get_content_id("default:stone_with_copper"),
+	id_list = {
+		minetest.get_content_id("default:stone_with_iron"),
+		minetest.get_content_id("default:stone_with_gold"),
+		minetest.get_content_id("default:stone_with_copper"),
+	},
 	chance = 0.98
 })
 
