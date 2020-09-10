@@ -33,7 +33,7 @@ register_ore({
 })
 
 register_ore({
-	id = minetest.get_content_id("default:stone"),
+	id = minetest.get_content_id("planetoids:stone"),
 	chance = 0.85
 })
 

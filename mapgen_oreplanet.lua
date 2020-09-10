@@ -14,7 +14,7 @@ local planet_params = {
 }
 
 
-local c_base = minetest.get_content_id("default:stone")
+local c_base = minetest.get_content_id("planetoids:stone")
 local c_air = minetest.get_content_id("air")
 local c_ignore = minetest.get_content_id("ignore")
 local c_vacuum
