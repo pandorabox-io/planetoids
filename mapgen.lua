@@ -38,7 +38,7 @@ minetest.register_on_generated(function(minp, maxp)
 		return
 	end
 
-	if has_planetoidgen_mod and planetoidgen.is_occupied(minp) then
+	if has_planetoidgen_mod and type(planetoidgen.is_occupied) == "function" and planetoidgen.is_occupied(minp) then
 		-- here be planetoids, skip mapgen
 		return
 	end
